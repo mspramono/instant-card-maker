@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <!-- Menambahkan Font Awesome untuk Icon IG -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Gaya Dasar & Animasi */
@@ -283,8 +282,8 @@
         if(!raw || !key) return alert("Lengkapi data dan kolom foto!");
 
         container.innerHTML = '';
-        const lines = raw.split('\\n');
-        const headers = lines[0].split('\\t').map(h => h.trim());
+        const lines = raw.split('\n'); // PERBAIKAN: \\n menjadi \n
+        const headers = lines[0].split('\t').map(h => h.trim()); // PERBAIKAN: \\t menjadi \t
 
         const sTitle = getFinalStyle('item-title');
         const sPhoto = getFinalStyle('item-photo');
@@ -301,7 +300,7 @@
                 container.appendChild(currentPage);
             }
 
-            const cols = lines[i].split('\\t');
+            const cols = lines[i].split('\t'); // PERBAIKAN: \\t menjadi \t
             let d = {};
             headers.forEach((h, idx) => d[h] = cols[idx] || '-');
 
